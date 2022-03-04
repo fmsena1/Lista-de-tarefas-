@@ -47,6 +47,11 @@ h1{
     text-align: center;
 }
 
+.add-tarefa{
+    width: 940px;
+    height: 45px;
+}
+
 .tarefa{
     background: white;
     display:flex;
@@ -56,6 +61,13 @@ h1{
     margin: 15px;
 }
 
+.btn-add{
+    background: rgb(46, 44, 44);
+    color: white;
+    font:24px arial bold;
+    padding: 8px;
+    border-radius: 5px;
+}
 
 
 .hover {
