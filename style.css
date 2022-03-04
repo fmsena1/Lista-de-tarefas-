@@ -1,0 +1,99 @@
+:root{
+    --primary-color:linear-gradient(68.15deg, #18191a 16.25%, #03040a 85.61%);
+    --primary-color-darker: rgb(11, 66, 110);
+}
+
+*{
+    box-sizing: border-box;
+    outline: 0;
+    margin: 0;
+    padding: 0;
+
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background: var(--primary-color);
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 1.3em;
+    line-height: 1.5em;
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    margin: 50px auto;
+}
+
+h1{
+    text-align: center;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+
+}
+
+.colunas{
+    border: 2px solid rgb(42, 41, 41);
+    width: 33%;
+    height: 500px;
+    display: inline-block;
+    text-align: center;
+}
+
+.tarefa{
+    background: white;
+    display:flex;
+    max-width: 25%;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 15px;
+}
+
+
+
+.hover {
+    background-color: rgb(32, 31, 31);
+}
+li{
+    list-style: none;
+    
+}
+
+form input, form label, form button{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+
+}
+
+form input{
+    font-size: 24px;
+    height: 50px;
+    padding: 0 20px;
+    
+}
+
+form input :focus{
+    outline:1px solid var(var(--primary-color));
+}
+
+form button{
+    border: none;
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    height: 50px;
+    cursor: pointer;
+}
+
+form button:hover{
+    background: var(--primary-color-darker);
+}
