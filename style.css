@@ -52,11 +52,7 @@ h1{
 }
 
 .tarefa{
-    background: white;
-    display:flex;
-    max-width: 355px;
-    border-radius: 5px;
-    padding: 5px;
+    color: white;
     margin: 15px;
 }
 

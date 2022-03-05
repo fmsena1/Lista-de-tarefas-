@@ -12,10 +12,10 @@ const addTarefa = document.querySelector('#paragrafo');
 
 
 
-function criarP(textInput){
-    const paragrafo = document.createElement('p');
-    paragrafo.classList.add('tarefa');
-    return paragrafo;
+function criarLi(textInput){
+    const li = document.createElement('li');
+    li.classList.add('tarefa');
+    return li;
 }
 
 input.addEventListener('keypress', function(e){
@@ -23,27 +23,62 @@ input.addEventListener('keypress', function(e){
         if (!input.value) return;
         criarTarefa(input.value);
         limparInput();
+      
     }
 });
 
 function limparInput(){
-    input.value = '';
+    input.value = "";
     input.focus();
 }
 
-function criaBotaoApagar (){
-
+function criaButtonClear (li){
+    li.innerHTML += '';
     const buttonClear = document.createElement('button');
-    buttonClear.innerHTML = 'Apagar';
+    buttonClear.innerHTML = ' Apagar';
+    //buttonClear.classList.add('apagar')
+    buttonClear.setAttribute('class', 'apagar');
+    buttonClear.setAttribute('title', 'Apagar esta tarefa');
+    li.appendChild(buttonClear);
 }
 
 function criarTarefa(textInput){
-    const p = criarP();
-    p.innerHTML = textInput;
-    addTarefa.appendChild(p);
+    const li = criarLi();
+    li.innerHTML = textInput;
+    addTarefa.appendChild(li)
+    limparInput();
+    criaButtonClear(li);
+    salvarTarefas();
 }
 
-function comecarArrastar(){
+function salvarTarefas(){
+    const liTarefas = addTarefa.querySelectorAll('li');
+    const listaDeTarefas = [];
+
+    for (let tarefa of liTarefas){
+        let tarefaTexto = tarefa.innerText;
+        tarefaTexto = tarefaTexto.replace('Apagar', '').trim();
+        listaDeTarefas.push(tarefaTexto);
+    }
+    
+
+    const tarefasJSON = JSON.stringify(listaDeTarefas);
+    localStorage.setItem('tarefas', tarefasJSON);
+
+}
+
+function addTarefaSalva(){
+    const tarefas = localStorage.getItem('tarefas');
+    const listaDeTarefas = JSON.parse(tarefas);
+    console.log(listaDeTarefas);
+
+    for (let tarefa of listaDeTarefas){
+        criarTarefa(tarefa);
+    }
+}
+
+addTarefaSalva();
+/*function comecarArrastar(){
     console.log('Começou a arrastar');
 
     this.classList.add('arrastando')
@@ -67,9 +102,17 @@ tarefas.forEach((tarefa)=>{
 })
 
 drop.addEventListener("dragover", entrouSoltar);
-drop.addEventListener("dragleave", saiuSoltar);
+drop.addEventListener("dragleave", saiuSoltar);*/
 button.addEventListener('click', function(e){
     if (!input.value) return;
     criarTarefa(input.value);
 });
 paragrafo.classList.add('tarefa');
+
+document.addEventListener('click', function(e){
+    const el = e.target;
+    if(el.classList.contains('apagar')){
+       el.parentElement.remove();
+       salvarTarefas();
+    }
+} )
