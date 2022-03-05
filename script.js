@@ -6,12 +6,16 @@ const input = document.querySelector('.add-tarefa');
 
 const button = document.querySelector('.btn-add');
 
-const addTarefa = document.querySelector('.tarefa');
 
 
-function criarLi(){
-    const li = document.createElement('li');
-    return li;
+const addTarefa = document.querySelector('#paragrafo');
+
+
+
+function criarP(textInput){
+    const paragrafo = document.createElement('p');
+    paragrafo.classList.add('tarefa');
+    return paragrafo;
 }
 
 input.addEventListener('keypress', function(e){
@@ -27,11 +31,16 @@ function limparInput(){
     input.focus();
 }
 
-function criarTarefa(textInput){
-    const li = criarLi();
-    li.innerHTML = textInput;
-    addTarefa.appendChild(li);
+function criaBotaoApagar (){
 
+    const buttonClear = document.createElement('button');
+    buttonClear.innerHTML = 'Apagar';
+}
+
+function criarTarefa(textInput){
+    const p = criarP();
+    p.innerHTML = textInput;
+    addTarefa.appendChild(p);
 }
 
 function comecarArrastar(){
@@ -46,7 +55,6 @@ function entrouSoltar(){
     this.classList.add("hover");
 
     const elementoArrastado = document.querySelector(".arrastando");
-
     this.appendChild(elementoArrastado);
 }
 
@@ -64,3 +72,4 @@ button.addEventListener('click', function(e){
     if (!input.value) return;
     criarTarefa(input.value);
 });
+paragrafo.classList.add('tarefa');
